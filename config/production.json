@@ -1,4 +1,3 @@
 {
-    "defaultTest": "PRODUCTION VALUE",
-    "HEROKUPORT": "4000"
+    "defaultTest": "PRODUCTION VALUE"
 }
