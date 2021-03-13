@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(express.urlencoded());
 
 app.get("/", (req, res) => {
-    res.send(process.env.NODE_ENV);
+    res.send(config.get("env.NODE_ENV"));
     let herokuport = config.get("HEROKUPORT"); // custom-environment-variables
     let localPort = config.get("localPort"); // default.js (production) config
     if (process.env.NODE_ENV === "development") {
