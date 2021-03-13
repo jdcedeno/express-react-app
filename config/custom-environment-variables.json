@@ -1,4 +1,5 @@
 {
     "TEST": "EXAMPLE",
-    "HEROKUPORT": "PORT"
+    "HEROKUPORT": "PORT",
+    "DB": "MONGO_URI"
 }

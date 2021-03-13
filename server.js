@@ -9,6 +9,7 @@ if (process.env.NODE_ENV === "production") {
     console.log("%%%%%% production.json %%%%%%%%%%");
     console.log("should be PRODUCTION VALUE", config.get("defaultTest"));
     console.log("should be 6000 (from .env)", config.get("HEROKUPORT"));
+    console.log("Should be MONGO_URI");
 } else {
     console.log("%%%%%% default.json %%%%%%%%%%");
     console.log("should be DEFAULT VALUE", config.get("defaultTest"));
