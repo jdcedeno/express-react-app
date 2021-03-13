@@ -1,4 +1,5 @@
 {
     "HEROKUPORT": "PORT",
-    "DB": "MONGO_URI"
+    "DB": "MONGO_URI",
+    "env": "NODE_ENV"
 }
