@@ -1,17 +1,40 @@
 require("dotenv").config();
 const config = require("config");
+const express = require("express");
 
-console.log("%%%%%% custom-environment-variables.json %%%%%%%%%%");
-console.log("should be HELLO_WORLD", config.get("TEST"));
-console.log("should be 6000", config.get("HEROKUPORT"));
+const app = express();
 
-if (process.env.NODE_ENV === "production") {
-    console.log("%%%%%% production.json %%%%%%%%%%");
-    console.log("should be PRODUCTION VALUE", config.get("defaultTest"));
-    console.log("should be 6000 (from .env)", config.get("HEROKUPORT"));
-    console.log("Should be MONGO_URI");
-} else {
-    console.log("%%%%%% default.json %%%%%%%%%%");
-    console.log("should be DEFAULT VALUE", config.get("defaultTest"));
-    console.log("should be 7000", config.get("localPort"));
-}
+app.use(helmet());
+app.use(express.json());
+app.use(express.urlencoded());
+
+app.get("/", (req, res) => {
+    let test = config.get("TEST"); // custom-environment-variables
+    let herokuport = config.get("HEROKUPORT"); // custom-environment-variables
+    let defaultTest = config.get("defaultTtest"); // default.js OR production override config
+    let localPort = config.get("localPort"); // default.js (production) config
+    if (process.env.NODE_ENV === "development") {
+        let result = {
+            TEST: test,
+            HEROKUPORT: herokuport,
+            defaultTest,
+            localPort: localPort,
+        };
+        res.status(200).send(result);
+    } else {
+        let result = {
+            TEST: test,
+            HEROKUPORT: herokuport,
+            defaultTest,
+        };
+        res.status(200).send(result);
+    }
+});
+
+// read port from custom-environment-variables if in
+const port =
+    proces.env.NODE_ENV === "development"
+        ? config.get("localPort")
+        : config.get("HEROKUPORT");
+
+app.listen(port, () => console.log(`listening on port ${port}`));
