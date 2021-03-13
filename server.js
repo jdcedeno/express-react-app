@@ -17,7 +17,7 @@ app.get("/", (req, res) => {
         let result = {
             HEROKUPORT: herokuport,
             defaultTest,
-            localPort: localPort,
+            localPort,
         };
         res.status(200).send(result);
     } else {
