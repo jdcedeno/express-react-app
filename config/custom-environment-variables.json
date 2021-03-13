@@ -1,5 +1,4 @@
 {
-    "TEST": "EXAMPLE",
     "HEROKUPORT": "PORT",
     "DB": "MONGO_URI"
 }
