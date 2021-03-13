@@ -7,7 +7,7 @@ const app = express();
 
 app.use(helmet());
 app.use(express.json());
-app.use(express.urlencoded());
+app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
     let herokuport = config.get("HEROKUPORT"); // custom-environment-variables
