@@ -10,13 +10,11 @@ app.use(express.json());
 app.use(express.urlencoded());
 
 app.get("/", (req, res) => {
-    let test = config.get("TEST"); // custom-environment-variables
     let herokuport = config.get("HEROKUPORT"); // custom-environment-variables
     let defaultTest = config.get("defaultTtest"); // default.js OR production override config
     let localPort = config.get("localPort"); // default.js (production) config
     if (process.env.NODE_ENV === "development") {
         let result = {
-            TEST: test,
             HEROKUPORT: herokuport,
             defaultTest,
             localPort: localPort,
@@ -24,7 +22,6 @@ app.get("/", (req, res) => {
         res.status(200).send(result);
     } else {
         let result = {
-            TEST: test,
             HEROKUPORT: herokuport,
             defaultTest,
         };
