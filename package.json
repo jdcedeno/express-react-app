@@ -7,8 +7,8 @@
     "description": "Template for creating MERN stack applications (initially only an express app with react for the frontend)",
     "main": "server.js",
     "scripts": {
-        "development": "$env:NODE_ENV='development' ; node server.js",
-        "production": "$env:NODE_ENV='production' ; node server.js",
+        "development": "@powershell -Command $env:NODE_ENV='development' ; node server.js",
+        "production": "@powershell -Command $env:NODE_ENV='production' ; node server.js",
         "dev": "node server.js",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
