@@ -34,7 +34,7 @@ app.get("/", (req, res) => {
 
 // read port from custom-environment-variables if in
 const port =
-    proces.env.NODE_ENV === "development"
+    process.env.NODE_ENV === "development"
         ? config.get("localPort")
         : config.get("HEROKUPORT");
 
